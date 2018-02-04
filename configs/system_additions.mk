@@ -15,6 +15,8 @@
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
+BUILD_RRO_SYSTEM_PACKAGE := $(TOP)/vendor/pixeldust/build/core/system_rro.mk
+
 # Include explicitly to work around GMS issues
 PRODUCT_PACKAGES += libprotobuf-cpp-full
 
