@@ -15,6 +15,9 @@
 # Boot animation
 BOOTANIMATION := 1440
 
+# Release name
+PRODUCT_RELEASE_NAME := Pixel 2 XL
+export TARGET_DEVICE=taimen
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -30,7 +33,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
 # Include optional stuff (e.g. prebuilt apps)
-#include vendor/pixeldust/configs/system_optional.mk
+include vendor/pixeldust/configs/system_optional.mk
 
 #
 # All components inherited here go to vendor image
@@ -44,8 +47,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 $(call inherit-product, device/google/taimen/device.mk)
 $(call inherit-product, vendor/google/taimen/taimen-vendor.mk)
 
+# Google Apps
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+
 # Inherit from GMS product config
-$(call inherit-product, vendor/gms/gms_full.mk)
+#$(call inherit-product, vendor/gms/gms_full.mk)
 
 PRODUCT_COPY_FILES += \
     device/google/taimen/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
@@ -55,6 +61,3 @@ PRODUCT_BRAND := google
 PRODUCT_NAME := pixeldust_taimen
 PRODUCT_DEVICE := taimen
 PRODUCT_MODEL := Pixel 5a
-
-# Google Apps
-#$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
